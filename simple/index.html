@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+<html lang="en" manifest="manifest.appcache"</html>>
+
+-->
+<html>
+
+<head>
+    <!--META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"-->
+    <!-- we ann not create this dynamically - why? -->
+<meta name="viewport" content="initial-scale=0.8,maximum-scale=1.5,minimum-scale=0.8,user-scalable=no,width=device-width">
+
+     <style>
+.propertyeditorheader {border: 1px solid black}
+.propertyeditorrow {border: 1px solid black}
+
+</style>
+
+</head>
+<body >
+  
+<!--
+ <div style="background: red;width:100%;height:96vh" > </div>
+ -->
+
+
+<script src="https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassistart.js"  data-run-function="run" data-config="./jassijs.json"></script>
+<script>
+    function run(){
+        requirejs(["jassijs_report/SimpleReportEditor","jassijs/base/Windows"],({SimpleReportEditor},windows)=>{
+            var reportdesign={
+            content: [
+                {
+                    text: "Hallo Herr {{nachname}}"
+                },
+                {
+                    text: "ok"
+                },
+                {
+                    columns: [
+                        {
+                            text: "text"
+                        },
+                        {
+                            text: "text"
+                        }
+                    ]
+                }
+            ],
+            data: {
+                nachname: "Meier"
+            }
+        };
+    var editor=new SimpleReportEditor({ 
+		id:"editor",
+		view:"horizontal"
+        //startUpWithPdfView:false,
+        //oncodechange:(text)=>{
+        //    console.log("code changed"+text);
+        //}
+		
+	});
+    editor.reportDesign=reportdesign;
+    
+
+        });
+    }
+</script>
+<div id="editor" style="width: 100%;height: 100%;" ></div>
+
+</body>

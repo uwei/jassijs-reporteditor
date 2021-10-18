@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <title>pdfmakejassi sample</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js'></script>
+</head>
+<body>
+  <script>
+	require.config(
+    {
+       paths: {
+		    'pdfmakejassi':"https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/pdfmakejassi",
+            'vfs_fonts': '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts',// '../../lib/vfs_fonts',
+            'pdfMake': '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake'  //'../../lib/pdfmake'
+        },
+        shim: {
+            "vfs_fonts":["pdfMake"]
+        },
+    });
+	require(["pdfmakejassi",'pdfMake',"vfs_fonts"],function(pdfmakejassi,pdfMake,vfs){
+		var docDefinition={
+			content: [
+				"Hallo ${name}",
+				"${parameter.date}"
+			]
+		};
+		//fill data  
+		var data={name:"Max"};
+		var parameter={date:"2021-10-15"};
+		docDefinition=pdfmakejassi.createReportDefinition(docDefinition,data,parameter);
+
+		pdfMake.createPdf(docDefinition).download();
+
+	});
+	</script>
+</body>
+</html>

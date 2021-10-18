@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>my first pdfmake example</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js'></script>
+  <script src='http://localhost/jassijs/dist/pdfmakejassi.js'></script>
+</head>
+<body>
+  <script>
+		var docDefinition={
+			content: [
+				"Hallo ${name}",
+				"${parameter.date}"
+			]
+		};
+		//fill data  
+		var data={name:"Max"};
+		var parameter={date:"2021-10-15"};
+		docDefinition=pdfmakejassi.createReportDefinition(docDefinition,data,parameter);
+
+		pdfMake.createPdf(docDefinition).download();
+	</script>
+</body>
+</html>
