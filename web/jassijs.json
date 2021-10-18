@@ -1,0 +1,30 @@
+{"demoreport": "jassijs_report",
+	"modules": {
+		"jassijs":"https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs.js",
+		"jassijs_report": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_report.js",
+		"jassijs_localserver": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_localserver.js",
+		"jassijs_editor": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_editor.js",
+		"demoreports": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/demoreports.js"
+	},
+	"require": {
+		"paths": {
+			"require.js": "//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"
+		}
+	},
+	"options":{
+		"Server":{
+			"filterModulInFilemap":["demoreports"],
+			"filterSytemfilesInFilemap":true,
+			"filterActions":{
+				"jassijs.remote.FileNode":[
+					"New/Report",
+					"New/Folder",
+					"Delete",
+					"Rename",
+					"Refresh",
+					"Download"
+				]
+			}
+		}
+	}
+}
