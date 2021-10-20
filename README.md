@@ -81,7 +81,7 @@ Similar to data, parameters can also be filled in the report.
 
 ### edittogether
 For texts with different formatting, individual text elements must be linked in pdfmake. Text elements that are to be edited together in a text box in the Designer are marked with edittogether. The text can be edited comfortably (thanks TinyMCE).
-![jassijs-reporteditor5](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor5.jpg)
+![jassijs-reporteditor6](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor6.jpg)
 
 ### foreach
 If the report data contain arrays, then this data can be filled into the report with foreach.
