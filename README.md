@@ -3,7 +3,7 @@ Jassijs Reporteditor is a visual tool for designing [pdfmake](http://pdfmake.org
 The report designer can be executed directly via [https://uwei.github.io/jassijs-reporteditor/web](https://uwei.github.io/jassijs-reporteditor/web). The report designer can also be integrated into your own websites. An example of this is [here](https://uwei.github.io/jassijs-reporteditor/simple).
 
 ## Runtime
-The Jassijs report designer extends the syntax of pdfmake by filling data e.g. with the help of data tables. In order for the report to be filled at runtime, a conversion of the report design is necessary. Here is an [example](https://uwei.github.io/jassijs-reporteditor/simple/usereport.html) or [with amd] (https://uwei.github.io/jassijs-reporteditor/simple/usereport-amd.html):
+The Jassijs report designer extends the syntax of pdfmake by filling data e.g. with the help of data tables. In order for the report to be filled at runtime, a conversion of the report design is necessary. Here is an [example](https://uwei.github.io/jassijs-reporteditor/simple/usereport.html) or [with amd](https://uwei.github.io/jassijs-reporteditor/simple/usereport-amd.html):
 ```html
 <head>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js'></script>
