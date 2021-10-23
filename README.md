@@ -152,7 +152,7 @@ export function test() {
 }
 ```
 For each member in dataforeach the body is repeated. In this example for each cust in data. The header and the foorter is filled at the beginning and the end of the datatable.
-Datatables could also have on or multiple groups - [example](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/22-Datatable.ts&line=1).
+Datatables could also have one or multiple groups - [example](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/22-Datatable.ts&line=1).
 ```javascript
 datatable: {
                 groups: [
@@ -167,14 +167,54 @@ datatable: {
                         footer: ["custfooter", "", ""]
                     }
                 ],
-                header: ["id", "customer", "city"],
-                footer: ["", "", ""],
-                dataforeach: "cust",
-                body: ["${cust.id}", "${cust.customer}", "${cust.city}"]
+                ...
             }
 ```
-The datatable is grouped firstly by 
-### format
+Here the datatable is grouped firstly by city and secondly by customer. Each group can have a footer and a header. 
 ## aggregate Functions
+Aggregate functions could be used to calc arrays or groups.
+Function | Description
+--- | ---
+AVG(array,field) | returns the average of a set.
+COUNT(array,field) | returns the number of items in a set.
+MAX(array,field) | returns the maximum value in a set.
+MIN(array,field) | returns the minimum value in a set
+SUM(array,field) | returns the sum of all or distinct values in a set
+
+[Here](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/23-Datatable.ts) is an example.
+```javascript
+...
+"${avg(group2,\"age\")}"
+...
+```
+Here avg returns the average of the field age of all elements in the array group2.
+
+### format
+[Here](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/30-Format.ts) is an example.
+For date and numbers you can define a pattern to format the value.
+
+```javascript
+table: {
+	body: [
+		["MM/DD/YYYY",{	text: "${date}",format: "MM/DD/YYYY"}],
+		["DD.MM.YYYY",{	text: "${date}",format: "DD.MM.YYYY"}],
+		["DD.MM.YYYY hh:mm:ss",	{text: "${date}",format: "DD.MM.YYYY hh:mm:ss"}	],
+		["h:mm:ss A",{text: "${date}",format: "h:mm:ss A"}],
+		["#.##0,00",{	text: "${num}",format: "#.##0,00"}],
+		["#.##0,00 €",{	text: "${num}",	format: "#.##0,00 €"}],
+		["$#,###.00",{text: "${num}",format: "$#,###.00"}]
+	]
+}
+```
+Output:
+Format | Result 
+--- | ---
+MM/DD/YYYY | 09/23/2021
+DD.MM.YYYY | 23.09.2021
+DD.MM.YYYY hh:mm:ss | 23.09.2021 21:52:12
+h:mm:ss A | 9:52:12 PM
+#.##0,00 | 12.502,55
+#.##0,00 € | 12.502,55 €
+$#,###.00 | $12,502.55
 
 
