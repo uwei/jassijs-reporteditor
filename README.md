@@ -37,7 +37,7 @@ The Jassijs Reportitor can be started directly in the [browser](https://uwei.git
 The existing reports are displayed on the right side. Double-click to open the report in Code view as javascript. 
 ![jassijs-reporteditor1](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor1.jpg)
 
-With Run ![jassijs-reporteditor2](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor2.jpg) the test-function ist alled and the report opens in the **Design** view. 
+With Run ![jassijs-reporteditor2](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor2.jpg) the test-function ist called and the report opens in the **Design** view. 
 ![jassijs-reporteditor3](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor3.jpg)
 There, new report elements can be added from the **Palette** via drag and drop. The **Properties** of the selected report item can be changed in the property editor. 
 
