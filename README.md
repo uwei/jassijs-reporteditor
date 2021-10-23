@@ -34,7 +34,7 @@ The Jassijs Reportitor can be started directly in the [browser](https://uwei.git
 The existing reports are displayed on the right side. Double-click to open the report in Code view as javascript. 
 ![jassijs-reporteditor1](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor1.jpg)
 
-With Run ![jassijs-reporteditor2](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor2.jpg) the report opens in the **Design** view. 
+With Run ![jassijs-reporteditor2](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor2.jpg) the test-function ist alled and the report opens in the **Design** view. 
 ![jassijs-reporteditor3](https://uwei.github.io/jassijs-reporteditor/doc/jassijs-reporteditor3.jpg)
 There, new report elements can be added from the **Palette** via drag and drop. The **Properties** of the selected report item can be changed in the property editor. 
 
@@ -49,7 +49,7 @@ You can create your own folders and reports (right-click context menu) under **F
 Not all properties of the report elements that are possible with pdfmake can be set with the visual disigner, but these properties are not lost when editing the report.
 
 ## Syntax extensions
-The following extensions of the pdfmake syntax can be used with the help of link. 
+The following extensions of the pdfmake syntax can be used. 
 
 ### templating:
 With the help of javascript template strings, data can be filled into the report. The following example shows this.
@@ -75,9 +75,9 @@ export function test() {
     };
 }
 ```
-The **data** of the report are specified in the data field or as a 2nd parameter when filling the report with **pdfmakejassi.createReportDefinition**.
-This data could be filled line javascript Template-Strings like **${name}**.
-Similar to data, parameters can also be filled in the report. 
+The **data** of the report are specified in the data field or as a 2nd parameter when filling the report with **pdfmakejassi.createReportDefinition(reportdesign,data,parameter)**.
+This data could be filled int to javascript Template-Strings like **${name}**.
+Similar to data, parameters can also be filled in the report like **${parameter.date}**. 
 
 ### edittogether
 For texts with different formatting, individual text elements must be linked in pdfmake. Text elements that are to be edited together in a text box in the Designer are marked with edittogether. The text can be edited comfortably (thanks TinyMCE).
@@ -109,13 +109,49 @@ export function test() {
 The element that is marked with foreach is repeated for each array element.
 The array element can be accessed with ${line.name}.
 foreach $line is the short form for foreach $line in data.
-If not the element itself but another report element is to be repeated,
-can be used.
+If not the element itself but another report element is to be repeated, the report element **do**
+can be used:
+```javascript
+table: {
+     	body: [
+             {
+             	foreach: "line",
+                do:["${line.name}"]
+              }
+        ]
+}
+```
+
 
 ### datatable
-Syntax {
+[example](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/21-Datatable.ts)
+```javascript
+var reportdesign = {
+    content: [
+        "A Simple datatable",
+        {
+            datatable: {
+                header: ["id", "customer", "city"],
+                footer: ["", "", ""],
+                dataforeach: "cust",
+                body: ["${cust.id}", "${cust.customer}", "${cust.city}"]
+            }
+        }
+    ]
+};
+export function test() {
+    var sampleData = [
+        { id: 1, customer: "Fred", city: "Frankfurt" },
+        { id: 8, customer: "Alma", city: "Dresden" },
+        { id: 3, customer: "Heinz", city: "Frankfurt" }
+    ];
+    return {
+        reportdesign,
+        data:sampleData
+    };
 }
-Beispiel
+```javascript
+ 
 ### format
 ## aggregate Functions
 
