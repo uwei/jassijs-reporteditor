@@ -150,8 +150,30 @@ export function test() {
         data:sampleData
     };
 }
+```
+For each member in dataforeach the body is repeated. In this example for each cust in data. The header and the foorter is filled at the beginning and the end of the datatable.
+Datatables could also have on or multiple groups - [example](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/22-Datatable.ts&line=1).
 ```javascript
- 
+datatable: {
+                groups: [
+                    {
+                        header: ["${group1.name}", "", ""],
+                        expression: "city",
+                        footer: ["", "", ""]
+                    },
+                    {
+                        header: ["${group2.name}", "", ""],
+                        expression: "customer",
+                        footer: ["custfooter", "", ""]
+                    }
+                ],
+                header: ["id", "customer", "city"],
+                footer: ["", "", ""],
+                dataforeach: "cust",
+                body: ["${cust.id}", "${cust.customer}", "${cust.city}"]
+            }
+```
+The datatable is grouped firstly by 
 ### format
 ## aggregate Functions
 
