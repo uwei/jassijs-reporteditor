@@ -27,6 +27,7 @@ The Jassijs report designer extends the syntax of pdfmake by filling data e.g. w
 	</script>
 </body>
 ```
+Here the conversion is done with: docDefinition=pdfmakejassi.createReportDefinition(docDefinition,data,parameter);
 
 ## Quick Start:
 The Jassijs Reportitor can be started directly in the [browser](https://uwei.github.io/jassijs-reporteditor/web). Please note that the reports stored there are not permanently stored and are lost when the browser cache is cleared.
