@@ -79,7 +79,7 @@ export function test() {
 }
 ```
 The **data** of the report are specified in the data field or as a 2nd parameter when filling the report with **pdfmakejassi.createReportDefinition(reportdesign,data,parameter)**.
-This data could be filled int to javascript Template-Strings like **${name}**.
+This data could be filled into javascript Template-Strings like **${name}**.
 Similar to data, parameters can also be filled in the report like **${parameter.date}**. 
 
 ### edittogether
@@ -111,7 +111,7 @@ export function test() {
 ```
 The element that is marked with foreach is repeated for each array element.
 The array element can be accessed with ${line.name}.
-foreach $line is the short form for foreach $line in data.
+**foreach $line** is the short form for **foreach $line in data**.
 If not the element itself but another report element is to be repeated, the report element **do**
 can be used:
 ```javascript
@@ -178,11 +178,11 @@ Here the datatable is grouped firstly by city and secondly by customer. Each gro
 Aggregate functions could be used to calc arrays or groups.
 Function | Description
 --- | ---
-AVG(array,field) | returns the average of a set.
-COUNT(array,field) | returns the number of items in a set.
-MAX(array,field) | returns the maximum value in a set.
-MIN(array,field) | returns the minimum value in a set
-SUM(array,field) | returns the sum of all or distinct values in a set
+avg(array,field) | returns the average of an array.
+count(array,field) | returns the number of items in an array.
+max(array,field) | returns the maximum value in an array.
+min(array,field) | returns the minimum value in an array
+sum(array,field) | returns the sum of all values in an array
 
 [Here](https://uwei.github.io/jassijs-reporteditor/web/#do=jassijs_editor.CodeEditor&file=demoreports/23-Datatable.ts) is an example.
 ```javascript
