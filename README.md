@@ -8,7 +8,7 @@ The Jassijs report designer extends the syntax of pdfmake by filling data e.g. w
 <head>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js'></script>
-  <script src='http://localhost/jassijs/dist/pdfmakejassi.js'></script>
+  <script src='https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/pdfmakejassi.js'></script>
 </head>
 <body>
   <script>
