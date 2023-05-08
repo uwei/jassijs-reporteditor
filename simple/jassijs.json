@@ -8,7 +8,7 @@
 		"modules": {
 			"jassijs": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs.js?version=newest"
 		}
-	},
+	}, 
 	"require": {
 		"paths": {
 			"require.js": "//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"
