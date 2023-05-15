@@ -7,7 +7,7 @@
 	},
 	"server": {
 		"modules": {
-			"jassijs": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs.js?version=newest"
+			"jassijs": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs-server.js?version=newest"
 		}
 	}, 
 	"require": {
