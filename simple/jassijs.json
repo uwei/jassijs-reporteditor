@@ -1,4 +1,5 @@
 {
+	"runServerInBrowser":true,
 	"modules": {
 		"jassijs":"https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs.js",
 		"jassijs_report": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_report.js",
