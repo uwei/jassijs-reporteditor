@@ -10,26 +10,26 @@ var filesdb;
 //deliver local folder
 var localfolderdb;
 
-async function loadLocalFileEntry(handle,fileName){
+async function loadLocalFileEntry(handle, fileName) {
   if (fileName.startsWith("./"))
-      fileName = fileName.substring(2);
+    fileName = fileName.substring(2);
   if (fileName.startsWith("."))
-      fileName = fileName.substring(1);
+    fileName = fileName.substring(1);
   if (fileName === "")
-      return handle;
+    return handle;
   var paths = fileName.split("/");
 
   var ret = handle;
   for (var x = 0; x < paths.length; x++) {
+    try {
+      ret = await ret.getDirectoryHandle(paths[x]);
+    } catch {
       try {
-          ret = await ret.getDirectoryHandle(paths[x]);
+        ret = await ret.getFileHandle(paths[x]);
       } catch {
-          try {
-              ret = await ret.getFileHandle(paths[x]);
-          } catch {
-              return undefined;
-          }
+        return undefined;
       }
+    }
   }
   return ret;
 }
@@ -60,16 +60,19 @@ async function findLocalFolder(fileName) {
     ret.onerror = ev => { resolve(undefined) }
   });
 
-  if (handle===undefined||(await handle.queryPermission({ mode: 'readwrite' })) !== 'granted') {
+  if (handle === undefined || (await handle.queryPermission({ mode: 'readwrite' })) !== 'granted') {
     return false;
   }
- 
-    //  console.log("service" + e.value[0]);
-    var ent=await loadLocalFileEntry(handle,"./client/"+fileName);
-    if(ent===undefined)
-      return false;
-    var ff = await ent.getFile();
-    return await ff.text();
+  var sfilename = "./client/" + fileName;
+  if (fileName.indexOf("?server=1"))
+    sfilename = "./" + fileName.split("?")[0];
+
+  //  console.log("service" + e.value[0]);
+  var ent = await loadLocalFileEntry(handle, "./client/" + sfileName);
+  if (ent === undefined)
+    return false;
+  var ff = await ent.getFile();
+  return await ff.text();
 }
 
 
@@ -94,7 +97,10 @@ async function loadFileFromDB(fileName) {
   }
   let transaction = filesdb.transaction('files', 'readonly');
   const store = transaction.objectStore('files');
-  var ret = await store.get("./client/" + fileName);
+  var sfilename = "./client/" + fileName;
+  if (fileName.indexOf("?server=1"))
+    sfilename = "./" + fileName.split("?")[0];
+  var ret = await store.get(sfilename);
   var r = await new Promise((resolve) => {
     ret.onsuccess = ev => { resolve(ret.result) }
     ret.onerror = ev => { resolve(undefined) }
@@ -208,8 +214,8 @@ async function handleEvent(event) {
   }
   var sfilename = filename.replace(self.registration.scope, "");
   var content = await findLocalFolder(sfilename);
-  if(!content)
-    content=await loadFileFromDB(sfilename);
+  if (!content)
+    content = await loadFileFromDB(sfilename);
   if (content !== undefined) {
     return new Response(content, {
       headers: { "Content-Type": getMimeType(filename) }
