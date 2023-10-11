@@ -1,10 +1,10 @@
 {
 	"runServerInBrowser":true,
 	"modules": {
-		"jassijs":"https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs.js",
-		"jassijs_report": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_report.js",
-		"jassijs_editor": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs_editor.js",
-		"demoreports": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/demoreports.js"
+		"jassijs":"https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/jassijs.js",
+		"jassijs_report": "https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/jassijs_report.js",
+		"jassijs_editor": "https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/jassijs_editor.js",
+		"demoreports": "https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/demoreports.js"
 	},
 	"require": {
 		"paths": {
@@ -13,7 +13,7 @@
 	},
 	"server": {
 		"modules": {
-			"jassijs": "https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/jassijs-server.js?version=newest"
+			"jassijs": "https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/jassijs-server.js?version=newest"
 		}
 	}, 
 	"options":{
