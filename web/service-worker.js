@@ -63,12 +63,12 @@ async function findLocalFolder(fileName) {
   if (handle === undefined || (await handle.queryPermission({ mode: 'readwrite' })) !== 'granted') {
     return false;
   }
-  var sfilename = "./client/" + fileName;
-  if (fileName.indexOf("?server=1"))
-    sfilename = "./" + fileName.split("?")[0];
+  var sfileName = "./client/" + fileName;
+  if (fileName.indexOf("?server=1")!==-1)
+    sfileName = "./" + fileName.split("?")[0];
 
   //  console.log("service" + e.value[0]);
-  var ent = await loadLocalFileEntry(handle, "./client/" + sfileName);
+  var ent = await loadLocalFileEntry(handle,  sfileName);
   if (ent === undefined)
     return false;
   var ff = await ent.getFile();
@@ -97,10 +97,10 @@ async function loadFileFromDB(fileName) {
   }
   let transaction = filesdb.transaction('files', 'readonly');
   const store = transaction.objectStore('files');
-  var sfilename = "./client/" + fileName;
-  if (fileName.indexOf("?server=1"))
-    sfilename = "./" + fileName.split("?")[0];
-  var ret = await store.get(sfilename);
+  var sfileName = "./client/" + fileName;
+  if (fileName.indexOf("?server=1")!==-1)
+    sfileName = "./" + fileName.split("?")[0];
+  var ret = await store.get(sfileName);
   var r = await new Promise((resolve) => {
     ret.onsuccess = ev => { resolve(ret.result) }
     ret.onerror = ev => { resolve(undefined) }
@@ -212,10 +212,10 @@ async function handleEvent(event) {
       headers: { "Content-Type": getMimeType(filename) }
     });
   }
-  var sfilename = filename.replace(self.registration.scope, "");
-  var content = await findLocalFolder(sfilename);
+  var sfileName = filename.replace(self.registration.scope, "");
+  var content = await findLocalFolder(sfileName);
   if (!content)
-    content = await loadFileFromDB(sfilename);
+    content = await loadFileFromDB(sfileName);
   if (content !== undefined) {
     return new Response(content, {
       headers: { "Content-Type": getMimeType(filename) }

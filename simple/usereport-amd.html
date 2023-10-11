@@ -9,7 +9,7 @@
 	require.config(
     {
        paths: {
-		    'pdfmakejassi':"https://cdn.jsdelivr.net/gh/uwei/jassijs@main/dist/pdfmakejassi",
+		    'pdfmakejassi':"https://cdn.jsdelivr.net/gh/uwei/jassijs@0.2/dist/pdfmakejassi",
             'vfs_fonts': '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts',// '../../lib/vfs_fonts',
             'pdfMake': '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake'  //'../../lib/pdfmake'
         },
@@ -26,7 +26,7 @@
 		};
 		//fill data  
 		var data={name:"Max"};
-		var parameter={date:"2021-10-15"};
+		var parameter={date:"2023-10-11"};
 		docDefinition=pdfmakejassi.createReportDefinition(docDefinition,data,parameter);
 
 		pdfMake.createPdf(docDefinition).download();
